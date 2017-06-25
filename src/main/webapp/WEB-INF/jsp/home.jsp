@@ -13,13 +13,12 @@
 <body>
 
     <h1>CRUD Operation Example</h1>
-    <a href="addEvent.jsp">Add a new Event</a>
+    <a href="showAddEventPage">Add a new Event</a>
     <br>
-    <a href="viewEvent.jsp">View Events</a>
+    <a href="events">View Events</a>
     <br>
     <a href="editEvent.jsp">Edit an event</a>
     <br>
     <a href="deleteEvent.jsp">Delete an event</a>
-
 </body>
 </html>

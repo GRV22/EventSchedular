@@ -9,7 +9,7 @@
 
     <beans:annotation-driven/>
 
-    <bean id="CalendarService" class="com.ganesh.UI.Service.CalendarService"></bean>
+    <bean id="calendarService" class="com.ganesh.UI.Service.CalendarServiceImpl"></bean>
 
     <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name = "prefix" value = "/WEB-INF/jsp/" />

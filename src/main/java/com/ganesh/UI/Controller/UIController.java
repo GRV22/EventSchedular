@@ -2,12 +2,15 @@ package com.ganesh.UI.Controller;
 
 import com.ganesh.UI.DTO.EventInfo;
 import com.ganesh.UI.Service.CalendarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 
 /**
  * Created by ganesh.kumar on 6/19/17.
@@ -15,18 +18,19 @@ import java.security.GeneralSecurityException;
 @Controller
 public class UIController {
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UIController.class);
+    CalendarService calendarService;
+
+    @Autowired
+    @Qualifier(value = "calendarService")
+    public void setCalendarService(CalendarService calendarService) {
+        this.calendarService = calendarService;
+    }
 
     @RequestMapping(value = "/testpage",method = RequestMethod.GET)
     public @ResponseBody String testPage(){
         return "Test page is Working";
     }
 
-    @RequestMapping(value = "/firstpage",method = RequestMethod.GET)
-    public String samplePage(Model model) throws IOException {
-        model.addAttribute("message", CalendarService.printPath());
-        return "sample";
-    }
 
     @RequestMapping(value = "/firstpage",method = RequestMethod.POST)
     public String samplePageRedirect(@ModelAttribute EventInfo event, Model model) throws IOException {
@@ -40,20 +44,55 @@ public class UIController {
         return "home";
     }
 
-    @RequestMapping(value = "/addEvent",method = RequestMethod.GET)
-    public String newEvent(Model model){
-        model.addAttribute("default","Test Event");
-        return "addEvent";
+    @RequestMapping(value = "/events",method = RequestMethod.GET)
+    public String getEvents(Model model) throws GeneralSecurityException, IOException {
+        List<EventInfo> events = this.calendarService.getEvents();
+        model.addAttribute("title","All Events");
+        model.addAttribute("events",events);
+        return "ViewEvents";
     }
 
-    @RequestMapping(value = "/addEvent",method = RequestMethod.POST)
-    public String addEventResponse(@ModelAttribute EventInfo event, Model model) throws IOException, GeneralSecurityException {
-        log.debug("B Target 1");
-        String message = CalendarService.insertNewEvent(event);
-        log.debug("B Target 2");
+
+    @RequestMapping(value = "/events",method = RequestMethod.POST)
+    public String addEvent(@ModelAttribute EventInfo event, Model model) throws IOException, GeneralSecurityException {
+        String message = this.calendarService.insertNewEvent(event);
         model.addAttribute("message", message);
         return "Response";
     }
+
+    @RequestMapping(value = "/events/{eventId}",method = RequestMethod.PUT)
+    public String updateEvent(@PathVariable String eventId,@ModelAttribute EventInfo event, Model model){
+        EventInfo eventInfo = this.calendarService.updateEvent(event);
+        return "Response";
+    }
+
+    @RequestMapping(value = "/events/{eventId}",method = RequestMethod.DELETE)
+    public String deleteEvent(@PathVariable String eventId , Model model) throws GeneralSecurityException, IOException {
+        String message = this.calendarService.deleteEvent(eventId);
+        model.addAttribute("message",message);
+        model.addAttribute("title","Delete Request Status");
+        return "Response";
+    }
+
+    @RequestMapping(value = "/delete/events/{eventId}",method = RequestMethod.GET)
+    public String deleteEventByGET(@PathVariable String eventId , Model model) throws GeneralSecurityException, IOException {
+        String message = "Tmp";//this.calendarService.deleteEvent(eventId);
+        model.addAttribute("message",message);
+        model.addAttribute("title","Delete Request Status");
+        return "Response";
+    }
+
+
+    @RequestMapping(value = "/showAddEventPage",method = RequestMethod.GET)
+    public String showAddEventPage(){
+        return "addEvent";
+    }
+
+    @RequestMapping(value = "/editEventPage",method = RequestMethod.GET)
+    public String editEventPage(@RequestParam(required = true)String eventId){
+        return "editEvent";
+    }
+
 
     @RequestMapping(value = "/EventSubmit",method = RequestMethod.GET)
     public String eventSubmit(Model model){

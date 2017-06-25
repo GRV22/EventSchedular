@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.io.*,java.util.*,com.ganesh.UI.Service.CalendarService" %>
-<jsp:useBean id="service" class="com.ganesh.UI.Service.CalendarService"/>
+<%--<jsp:useBean id="service" class="com.ganesh.UI.Service.CalendarService"/>--%>
 <html>
 <head>
     <title>Response</title>
@@ -20,7 +20,7 @@ String startTime = "2017-06-22T01:00:00+05:30";//request.getParameter("startTime
 String endTime = "2017-06-23T01:00:00+05:30";//request.getParameter("endTime");
 String attendee = "ganesh.kumar@payu.in";//request.getParameter("attendee");
 
-String result = service.insertNewEvent2(eventName,summary,startTime,endTime,attendee);
+<%--String result = service.insertNewEvent2(eventName,summary,startTime,endTime,attendee);--%>
 %>
 </body>
 </html>

@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Response</title>
+    <title>Response Page</title>
 </head>
 <body>
-    <h1>Response</h1><br>
-    <h2>${message}</h2>
+    <a href="../../home">Go to Home</a><br>
+    <h1 align="center">${title}</h1><br>
+    <p align="center">${message}</p>
 </body>
 </html>
