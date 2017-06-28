@@ -14,4 +14,4 @@ To use project :
 3) Copy the private key Credentials to "resources" folder.
 4) Update the Application details in config.properties in "resources" folder.
 
-[[https://github.com/GRV22/EventSchedular/blob/master/images/addEvent.png|alt=octocat]]
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/addEvent.png)
