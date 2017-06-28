@@ -13,3 +13,20 @@ To use project :
 2) Create Google Service Account.
 3) Copy the private key Credentials to "resources" folder.
 4) Update the Application details in config.properties in "resources" folder.
+
+HomePage
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/home.png)
+Add a Event
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/addEvent.png)
+Add Event Response
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/addEventResponse.png)
+View Events
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/viewEvents.png)
+Delete Event Response
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/deleteEventResponse.png)
+Edit an Event
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/editEvent.png)
+Edit event Response
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/editEventResponse.png)
+Dashboard to track Requests
+![alt text](https://github.com/GRV22/EventSchedular/blob/master/images/dashboard.png)
