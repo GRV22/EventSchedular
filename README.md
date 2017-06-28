@@ -9,7 +9,7 @@ I used these Technologies:
 3) Spring MVC
 
 To use project :
-1) Create Project and select the APIs you want to use.
+1) Create Project on https://console.developers.google.com/apis/dashboard and select the APIs you want to use.
 2) Create Google Service Account.
 3) Copy the private key Credentials to "resources" folder.
 4) Update the Application details in config.properties in "resources" folder.
