@@ -9,30 +9,51 @@
 <html>
 <head>
     <title>Add new Event</title>
+    <script>
+        var cnt = 1;
+        function addAttendee() {
+
+            var attendeeId = "attendee"+cnt;
+
+            var element = document.createElement("input");
+            element.setAttribute("type", "email");
+            element.setAttribute("name", "attendee");
+            element.setAttribute("id",attendeeId);
+
+            var removeButtonId = "removeAttendee"+cnt;
+
+            var button = document.createElement("button");
+            button.setAttribute("id",removeButtonId);
+            buttonText = document.createTextNode("Remove");
+            button.appendChild(buttonText);
+            button.setAttribute("onclick","removeAttendee(\""+attendeeId+"\","+"\""+removeButtonId+"\");");
+
+            document.getElementById("attendees").appendChild(element);
+            document.getElementById("attendees").appendChild(button);
+            cnt = cnt+1;
+        }
+
+        function removeAttendee(attendeeId,attendeeButtonId)
+        {
+            console.log(attendeeId);
+            console.log(attendeeButtonId);
+            document.getElementById(attendeeId).remove();
+            document.getElementById(attendeeButtonId).remove();
+        }
+
+
+    </script>
 </head>
 <body>
 
-
-<script type="text/javascript">
-
-    function addAttendee() {
-
-        var element = document.createElement("input");
-        element.setAttribute("type", "email");
-        element.setAttribute("name", "attendee");
-        var spanvar = document.getElementById("attendees");
-        spanvar .appendChild(element).appendChild("<br>");
-
-    }
-</script>
-
+<a href="${pageContext.request.contextPath}/home">Go to Home</a>
 
 
 <h1>Add New Event</h1>
-    <form action="events" method="post">
+    <form action="${pageContext.request.contextPath}/events" method="post">
     <table>
         <tr><td>Event Name:</td><td><input type="text" name="eventName" value="Test Event"/></td></tr>
-        <tr><td>Summary:</td><td><input type="text" name="summary"/></td></tr>
+        <tr><td>Description:</td><td><input type="text" name="summary"/></td></tr>
         <tr><td>Start Time:</td><td><input type="text" name="startTime" value="YYYY-MM-DDThh:mmTZD"/></td></tr>
         <tr><td>End Time:</td><td><input type="text" name="endTime" value="YYYY-MM-DDThh:mmTZD"/></td></tr>
         <tr>
@@ -40,7 +61,7 @@
             <td>
                 <p class="setting">
                     <input type="button" id="add" name="add" class="addperson" value="Add row" onclick="addAttendee();">
-                    <span id="attendees"></span>
+                    <div id="attendees"></div>
                     <br><br>
                 </p>
             </td>

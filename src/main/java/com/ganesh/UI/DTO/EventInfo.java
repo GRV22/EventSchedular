@@ -63,6 +63,10 @@ public class EventInfo {
     }
 
     public String toString(){
-        return "Event => "+eventName+" : "+summary+" : "+attendee;
+        return "Event Name : "+eventName+"\n"
+                +"Event Description : "+summary+"\n"
+                +"Start Time : "+startTime+"\n"
+                +"End Time : "+endTime+"\n"
+                +"Guests : "+attendee+"\n";
     }
 }

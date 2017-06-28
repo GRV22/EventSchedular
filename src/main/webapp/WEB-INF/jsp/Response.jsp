@@ -11,7 +11,7 @@
     <title>Response Page</title>
 </head>
 <body>
-    <a href="../../home">Go to Home</a><br>
+    <a href="${pageContext.request.contextPath}/home">Go to Home</a><br>
     <h1 align="center">${title}</h1><br>
     <p align="center">${message}</p>
 </body>

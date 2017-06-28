@@ -13,5 +13,6 @@ public interface CalendarService {
     public String insertNewEvent(EventInfo eventInfo) throws GeneralSecurityException, IOException;
     public String deleteEvent(String eventId) throws IOException, GeneralSecurityException;
     public List<EventInfo> getEvents() throws GeneralSecurityException, IOException;
-    public EventInfo updateEvent(EventInfo eventInfo);
+    public EventInfo updateEvent(EventInfo eventInfo) throws GeneralSecurityException, IOException;
+    public EventInfo getEventById(String eventId) throws GeneralSecurityException, IOException;
 }
