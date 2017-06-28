@@ -79,7 +79,7 @@ public class EventController {
         model.addAttribute("event",eventInfo);
         return "viewAnEvent";
     }
-    
+
 
     @RequestMapping(value = "/showAddEventPage",method = RequestMethod.GET)
     public String showAddEventPage(){
