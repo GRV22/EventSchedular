@@ -79,29 +79,7 @@ public class EventController {
         model.addAttribute("event",eventInfo);
         return "viewAnEvent";
     }
-
-    @RequestMapping(value = "/events/{eventId}",method = RequestMethod.PUT)
-    public String updateEvent(@PathVariable String eventId,@ModelAttribute EventInfo event, Model model) throws GeneralSecurityException, IOException {
-        EventInfo eventInfo = this.calendarService.updateEvent(event);
-        model.addAttribute("title","Updated Event");
-        model.addAttribute("message",eventInfo.toString());
-        return "Response";
-    }
-
-    @RequestMapping(value = "/events/{eventId}",method = RequestMethod.DELETE)
-    public ModelAndView deleteEvent(@PathVariable String eventId) throws GeneralSecurityException, IOException {
-
-        System.out.println("Yaha tak");
-        ModelAndView modelAndView = new ModelAndView("home");
-        return modelAndView;
-        /**
-         String message = this.calendarService.deleteEvent(eventId);
-         model.addAttribute("message",message);
-         model.addAttribute("title","Delete Request Status");
-         return "Response";
-         **/
-    }
-
+    
 
     @RequestMapping(value = "/showAddEventPage",method = RequestMethod.GET)
     public String showAddEventPage(){
