@@ -1,0 +1,42 @@
+Before Using it . Your System will need to have :
+1) Tomcat
+2) Any IDE(like Intellij)
+3) Maven build tool on system
+
+Step Up credentials using Google dashboard to use Google Products APIs :
+1) Go to https://console.developers.google.com/apis/dashboard
+2) Create New Project.
+3) Go to Credentials 
+4) Click "Create Credentials" and Select "Service account Key"
+5) Select Service Account if you don't have any create one by selecting "New service account".
+6) Type Service account name and in "Role" Select Project->Owner
+5) Select "P12" as Key Type.
+6) Click Create and Save ".p12" extension file.
+7) Select New Generated Service account key.
+8) In Credentials , Go to "OAuth consent screen" give Product name and save it.
+9) In Library , Select Calendar API and enable it.
+
+
+Use Credentials in Project:
+
+1) Copy Credentials.p12 (which you had download in above steps) to "resources" folder in Project.
+2) Open config.properties in "resources" folder
+3) Replace "serviceAccountId" with your serviceAccountId(which you had created in above steps on Dashboard)
+4) Replace "p12FileName" with your File Name.
+5) Replace "applicationName" with Product Name(which you had given in above steps on Dashboard)
+
+
+
+Steps to Run project.
+
+1) Start Terminal
+2) Go to Project Folder (It will have pom.xml file)
+Command : cd ProjectFolderPath
+3) Run this maven command
+Command : mvn clean install
+4) Copy war file in project "targets" Folder to tomcat "webapps" Folder
+Command : cp ./targets/ProjectName.war /usr/local/tomcat/webapps
+5) Start tomcat
+6) Check catalina logs to check project is successfully deployed.
+
+For more reference , I am adding deploying script file.
